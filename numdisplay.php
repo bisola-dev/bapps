@@ -1,19 +1,20 @@
 <?php
 require_once('connection.php');
+// Check if user is authenticated via session
+if (!isset($_SESSION['verified_userid']) || empty($_SESSION['verified_userid'])) {
+    header("Location: access_denied.php");
+    exit;
+}
 
-// $crumb='HttpContext.Current.Request.Cookies("userId").Value.ToString';
-
-
- //$crumb=6;
-
-  $crumb=$_COOKIE['userId'];
+$crumb = $_SESSION['verified_userid'];
+$Uname = $_SESSION['verified_username'];
 
 
  if (isset($_GET['data'])) {
-   $data = $_GET['data'];
-   $name = $_GET['name'];
-   $description = $_GET['description'];
-}
+    $data = $_GET['data'];
+    $name = $_GET['name'];
+    $description = $_GET['description'];
+ }
 
 
 ?>
@@ -57,76 +58,157 @@ require_once('connection.php');
       <!--<link href="assets/dist/css/stylecrm-rtl.css" rel="stylesheet" type="text/css"/>-->
       <!-- End Theme Layout Style
          =====================================================================-->
+      <style>
+          /* YabaTech Color Scheme */
+          :root {
+              --yabatech-green: #006400;
+              --yabatech-yellow: #FFD700;
+              --yabatech-light-green: #90EE90;
+              --yabatech-dark-green: #004400;
+          }
 
-    <style>
-   
-    /* Override the default styles to make the footer cover the entire width */
-    .main-footer {
-        background-color: #f8f8f8; /* Set your desired background color */
-        padding: 20px 0; /* Adjust padding as needed */
-        position: relative;
-        bottom: 0;
-        width: 100%;
-    }
+          body {
+              background-color: #f8f9fa;
+              font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          }
 
-    .main-footer .container-fluid {
-        margin: 0; /* Remove default container margins */
-        padding: 0; /* Remove default container padding */
-    }
+          .yabatech-header {
+              background: linear-gradient(135deg, var(--yabatech-green), var(--yabatech-dark-green));
+              color: white;
+              padding: 20px;
+              text-align: center;
+              margin-bottom: 30px;
+              border-radius: 8px;
+              box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+          }
 
-    .main-footer .row {
-        margin: 0; /* Remove default row margins */
-        padding: 0px; /* Set your desired padding */
-        display: flex;
-        justify-content: space-around; /* Spread items evenly */
-    }
+          .yabatech-header h1 {
+              margin: 0;
+              font-size: 2.5em;
+              font-weight: bold;
+          }
 
-    .main-footer .col-md-6 {
-        text-align: center;
-        color: green; /* Set your desired text color */
-    }
-</style>
+          .yabatech-header p {
+              margin: 5px 0 0 0;
+              font-size: 1.2em;
+              opacity: 0.9;
+          }
+
+          .panel-bd {
+              border: 2px solid var(--yabatech-green);
+              border-radius: 10px;
+              box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+              background: white;
+          }
+
+          .panel-heading {
+              background: linear-gradient(135deg, var(--yabatech-yellow), #FFA500);
+              color: var(--yabatech-dark-green);
+              border-bottom: 2px solid var(--yabatech-green);
+              border-radius: 8px 8px 0 0;
+              padding: 20px;
+              text-align: center;
+          }
+
+          .panel-heading h4 {
+              margin: 0;
+              font-weight: bold;
+              font-size: 1.5em;
+          }
+
+          .remitta-display {
+              font-size: 1.8em;
+              font-weight: bold;
+              color: var(--yabatech-dark-green);
+              background: var(--yabatech-light-green);
+              padding: 20px;
+              border-radius: 8px;
+              margin: 20px 0;
+              text-align: center;
+              border: 2px solid var(--yabatech-green);
+          }
+
+          .main-footer {
+              background: var(--yabatech-green);
+              color: white;
+              text-align: center;
+              padding: 20px;
+              margin-top: 50px;
+          }
+
+          .main-footer a {
+              color: var(--yabatech-yellow);
+              text-decoration: none;
+          }
+
+          .main-footer a:hover {
+              text-decoration: underline;
+          }
+
+          /* Responsive design */
+          @media (max-width: 768px) {
+              .yabatech-header h1 {
+                  font-size: 2em;
+              }
+              .remitta-display {
+                  font-size: 1.5em;
+              }
+          }
+      </style>
 </head>
-<body>
-  
-      <!-- Main content -->
-    <section class="content">
-        <div class="row">
-            <!-- Form controls -->
-            <div class="col-sm-12">
-                <div class="panel panel-bd ">
-                    <div class="panel-heading">
-                        <div class="btn-group">
-                            <h4>
-                                <?php if (!empty($data) && $data != '1' && $data != '0' && $name != ''): ?>
-                                    <div style="color: green; text-align: center; margin-top: 10px;">
-                                        Dear <?php echo $name; ?>, this is your remitta number for the <?php echo $description;?>:
-                                        <?php echo $data; ?>
-                                    </div>
-                                <?php endif; ?>
-                            </h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- /.content -->
+   <body>
+       <!-- YabaTech Header -->
+       <div class="container">
+           <div class="yabatech-header">
+               <h1>Yaba College of Technology</h1>
+               <p>Payment Confirmation</p>
+           </div>
+       </div>
 
-    <!-- Footer -->
-    <footer class="main-footer" style="padding: 10px;">
-        <div class="container-fluid">
-            <div class="row">
-                 <div style="width: 100%; text-align: left;">
-                    <p>
-                        <strong> Copyright &copy; <?php echo date("Y"); ?> <a href="#">Yaba college of technology</a>.</strong>
-                        All rights reserved.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- End Footer -->
+       <!-- Main content -->
+       <section class="content">
+           <div class="container">
+               <div class="row justify-content-center">
+                   <div class="col-md-8 col-lg-6">
+                       <div class="panel panel-bd">
+                           <div class="panel-heading">
+                               <h4>Remitta Number Generated</h4>
+                           </div>
+                           <div class="panel-body">
+                               <?php if (!empty($data) && $data != '1' && $data != '0' && !empty($name)): ?>
+                                   <div class="text-center">
+                                       <p class="mb-4" style="font-size: 1.2em; color: var(--yabatech-dark-green);">
+                                           Dear <strong><?php echo htmlspecialchars($name); ?></strong>,<br>
+                                           Your remitta number for <strong><?php echo htmlspecialchars($description); ?></strong> is:
+                                       </p>
+                                       <div class="remitta-display">
+                                           <?php echo htmlspecialchars($data); ?>
+                                       </div>
+                                       <p style="color: var(--yabatech-dark-green); font-weight: 500;">
+                                           Please proceed to make payment using this remitta number.
+                                       </p>
+                                   </div>
+                               <?php else: ?>
+                                   <div class="alert alert-warning text-center">
+                                       <h5>No valid remitta number found.</h5>
+                                       <p>Please go back and try again.</p>
+                                   </div>
+                               <?php endif; ?>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </section>
+       <!-- /.content -->
+
+       <!-- Footer -->
+       <footer class="main-footer">
+           <div class="container">
+               <strong>Copyright &copy; <?php echo date("Y"); ?> <a href="#">Yaba College of Technology</a>.</strong> All rights reserved.
+           </div>
+       </footer>
+       <!-- End Footer -->
 
       <!-- ./wrapper -->
       <!-- Start Core Plugins
@@ -159,10 +241,6 @@ require_once('connection.php');
 
 <!-- Mirrored from thememinister.com/crm/add-customer.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 27 Aug 2019 13:28:08 GMT -->
 </html>
-
-
-
-
 
 
 
